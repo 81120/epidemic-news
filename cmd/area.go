@@ -12,6 +12,9 @@ var areaCmd = &cobra.Command{
 	Long:  "",
 	Run: func(cmd *cobra.Command, args []string) {
 		area, _ := cmd.Flags().GetString("area")
+		if area == "" {
+			area = "湖北"
+		}
 		res := service.FetchDataByArea(area)
 		res.DisplayCityList()
 	},
